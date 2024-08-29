@@ -1,41 +1,5 @@
-"use strict";
-function createOrder(id, customer, items) {
-    let order = {
-        id: id,
-        customer: customer,
-        items: items,
-        status: "en attente"
-    };
-    return order;
-}
-function calculateTotalPrice(order) {
-    let totalPrice = 0;
-    order.items.forEach((item) => {
-        totalPrice += item.product.price * item.quantity;
-    });
-    return totalPrice;
-}
-class OrderManage {
-    constructor() {
-        this.orders = [];
-    }
-    addOrder(order) {
-        this.orders.push(order);
-    }
-    getOrdersById(id) {
-        return this.orders.find((order) => order.id.toString() === id);
-    }
-    updateOrderStatus(id, status) {
-        const order = this.getOrdersById(id);
-        if (order) {
-            order.status = status;
-        }
-        return order;
-    }
-    listOrdersByStatus(status) {
-        return this.orders.filter((order) => order.status === status);
-    }
-}
+import { createOrder } from './function';
+import { OrderManage } from './shop';
 const customer1 = { id: 1, name: "John Doe", email: "john.doe@example.com" };
 const customer2 = { id: 2, name: "Toto tutu", email: "toto.tutu@example.com" };
 const customer3 = { id: 3, name: "Henry Bernard", email: "hb@example.com" };
